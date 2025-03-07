@@ -20,7 +20,7 @@ export default function Navbar() {
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
-      setIsScrolled(scrollPosition > 50);
+      setIsScrolled(scrollPosition > 0);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -29,9 +29,9 @@ export default function Navbar() {
 
   return (
     <header className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-[#0B1120]/90 backdrop-blur-md border-b border-[#1E293B]' : 'bg-transparent'
+      isScrolled ? 'bg-[#0B1120]/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
     }`}>
-      <nav className="flex items-center justify-between p-4 lg:px-8" aria-label="Global">
+      <nav className="flex items-center justify-between p-4 lg:px-8 max-w-7xl mx-auto" aria-label="Global">
         <div className="flex lg:flex-1">
           <Link href="/" className="-m-1.5 p-1.5">
             <span className="text-2xl font-bold text-white">Nemesis</span>
@@ -47,7 +47,7 @@ export default function Navbar() {
             <Bars3Icon className="h-6 w-6" aria-hidden="true" />
           </button>
         </div>
-        <div className="hidden lg:flex lg:gap-x-8">
+        <div className="hidden lg:flex lg:gap-x-8 lg:items-center">
           {navigation.map((item) => (
             <Link
               key={item.name}
@@ -58,7 +58,7 @@ export default function Navbar() {
             </Link>
           ))}
         </div>
-        <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-4">
+        <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-4 lg:items-center">
           <Link
             href="/signin"
             className="text-sm font-semibold leading-6 text-[#94A3B8] hover:text-white transition-colors"
