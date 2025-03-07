@@ -4,38 +4,12 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import NetworkAnimation from './NetworkAnimation';
 import Globe from './Globe';
+import MovingLogoStack from './MovingLogoStack';
 import { 
   CpuChipIcon, 
   GlobeAltIcon, 
   ServerStackIcon 
 } from '@heroicons/react/24/outline';
-
-const capabilities = [
-  {
-    title: 'IoT Solutions',
-    description: 'Smart device integration and management',
-    icon: CpuChipIcon,
-    gradient: 'from-[#4C51BF]/20 to-[#6366F1]/5',
-    border: 'border-[#4C51BF]/20',
-    iconColor: 'text-[#6366F1]',
-  },
-  {
-    title: 'Global Networks',
-    description: 'Worldwide connectivity solutions',
-    icon: GlobeAltIcon,
-    gradient: 'from-[#4F46E5]/20 to-[#6366F1]/5',
-    border: 'border-[#4F46E5]/20',
-    iconColor: 'text-[#818CF8]',
-  },
-  {
-    title: 'ICT Infrastructure',
-    description: 'Enterprise-grade communication systems',
-    icon: ServerStackIcon,
-    gradient: 'from-[#4338CA]/20 to-[#4F46E5]/5',
-    border: 'border-[#4338CA]/20',
-    iconColor: 'text-[#A5B4FC]',
-  },
-];
 
 export default function Hero() {
   return (
@@ -46,7 +20,7 @@ export default function Hero() {
         <NetworkAnimation />
       </div>
 
-      <div className="mx-auto max-w-7xl px-6 pt-10 pb-24 sm:pb-32 lg:flex lg:px-8 lg:py-40">
+      <div className="mx-auto max-w-7xl px-6 pt-8 sm:pt-16 lg:flex lg:items-center lg:px-8 lg:py-32">
         <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-xl lg:flex-shrink-0 lg:pt-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -68,7 +42,7 @@ export default function Hero() {
               <span className="text-[#818CF8]">at Affordable Prices</span>
             </h1>
             <p className="mt-6 text-lg leading-8 text-gray-300">
-              Ship production apps at lightning speed, and scale to a global audience effortlessly with our next-gen web development services.
+            At Nemesis, we specialize in delivering high-quality web development services that won't break the bank. With over 100 successful projects, our team combines modern design with technical expertise to bring your vision to life.
             </p>
             <div className="mt-10 flex items-center gap-x-6">
               <Link
@@ -84,29 +58,9 @@ export default function Hero() {
                 Learn more <span aria-hidden="true" className="ml-1 group-hover:translate-x-1 transition-transform duration-200">→</span>
               </Link>
             </div>
-          </motion.div>
-
-          {/* Capabilities Section */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-3"
-          >
-            {capabilities.map((capability, index) => (
-              <motion.div
-                key={capability.title}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 + 0.5 }}
-                whileHover={{ scale: 1.05 }}
-                className={`rounded-lg p-4 bg-gradient-to-b ${capability.gradient} ${capability.border} border backdrop-blur-sm hover:bg-opacity-30 transition-all duration-300`}
-              >
-                <capability.icon className={`h-6 w-6 ${capability.iconColor} mb-3`} />
-                <h3 className="text-sm font-semibold text-white">{capability.title}</h3>
-                <p className="mt-1 text-xs text-[#94A3B8]">{capability.description}</p>
-              </motion.div>
-            ))}
+            <div className="mt-12">
+              <MovingLogoStack />
+            </div>
           </motion.div>
         </div>
 
