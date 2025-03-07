@@ -8,7 +8,7 @@ const testimonials = [
     body: "Working with Nemesis was a game-changer for our business. They delivered a beautiful website that perfectly represents our brand and has significantly increased our online sales.",
     author: {
       name: 'Maria Santos',
-      handle: 'CEO at TechPH',
+      role: 'CEO at TechPH',
       imageUrl: '/testimonials/maria.webp'
     },
   },
@@ -16,7 +16,7 @@ const testimonials = [
     body: "The team at Nemesis is incredibly professional and skilled. They understood our requirements perfectly and delivered a website that exceeded our expectations.",
     author: {
       name: 'Juan dela Cruz',
-      handle: 'Founder at StartupMNL',
+      role: 'Founder at StartupMNL',
       imageUrl: '/testimonials/juan.webp'
     },
   },
@@ -24,7 +24,7 @@ const testimonials = [
     body: "What impressed me most was their attention to detail and commitment to delivering high-quality work. They're truly experts in web development.",
     author: {
       name: 'Ana Reyes',
-      handle: 'Marketing Director',
+      role: 'Marketing Director',
       imageUrl: '/testimonials/ana.webp'
     },
   },
@@ -40,31 +40,32 @@ export default function Testimonials() {
             Hear from our satisfied clients
           </p>
         </div>
-        <div className="mx-auto mt-16 flow-root max-w-2xl lg:mx-0 lg:max-w-none">
-          <div className="-mt-8 sm:-mx-4 sm:columns-2 sm:text-[0] lg:columns-3">
+        <div className="mt-16">
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {testimonials.map((testimonial, index) => (
               <motion.div
                 key={testimonial.author.name}
-                className="pt-8 sm:inline-block sm:w-full sm:px-4"
+                className="flex flex-col items-center bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300"
                 initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.2 }}
               >
-                <figure className="rounded-2xl bg-gray-50 p-8 text-sm leading-6">
+                <figure className="text-center">
                   <blockquote className="text-gray-900">
-                    <p>{`"${testimonial.body}"`}</p>
+                    <p className="text-lg leading-7">{`"${testimonial.body}"`}</p>
                   </blockquote>
-                  <figcaption className="mt-6 flex items-center gap-x-4">
+                  <figcaption className="mt-6 flex flex-col items-center">
                     <Image
-                      className="h-10 w-10 rounded-full bg-gray-50"
+                      className="h-16 w-16 rounded-full"
                       src={testimonial.author.imageUrl}
-                      alt=""
-                      width={40}
-                      height={40}
+                      alt={testimonial.author.name}
+                      width={64}
+                      height={64}
                     />
-                    <div>
+                    <div className="mt-4">
                       <div className="font-semibold text-gray-900">{testimonial.author.name}</div>
-                      <div className="text-gray-600">{`@${testimonial.author.handle}`}</div>
+                      <div className="text-gray-600">{testimonial.author.role}</div>
                     </div>
                   </figcaption>
                 </figure>

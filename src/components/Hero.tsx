@@ -13,7 +13,7 @@ import {
 
 export default function Hero() {
   return (
-    <div className="relative isolate overflow-hidden bg-[#0B1120]">
+    <div className="relative isolate overflow-hidden bg-gradient-to-b from-[#0B1120] via-[#131B2C] to-[#1E293B]">
       {/* Background with network animation */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-gradient-to-b from-[#0B1120] via-[#131B2C] to-[#1E293B]" />
@@ -65,7 +65,7 @@ export default function Hero() {
         </div>
 
         {/* Right side globe */}
-        <div className="mx-auto mt-16 flex max-w-2xl sm:mt-24 lg:ml-10 lg:mr-0 lg:mt-0 lg:max-w-none lg:flex-none xl:ml-32">
+        <div className="mx-auto mt-16 flex max-w-2xl sm:mt-24 lg:ml-10 lg:mr-0 lg:mt-0 lg:flex-none xl:ml-32">
           <motion.div
             className="relative w-[600px] h-[600px]"
             initial={{ opacity: 0, scale: 0.8 }}
