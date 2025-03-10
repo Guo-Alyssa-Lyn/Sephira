@@ -1,9 +1,25 @@
 import { useEffect, useRef, useState, useCallback } from 'react';
-import { useDebounce, useDevicePixelRatio, useOrientation } from 'react-use';
+import { useDebounce, useOrientation } from 'react-use';
 import { PhysicsParams, Node, Connection, EngineConfig } from './types';
 import { createQuadTree, updateQuadTree } from './quadTree';
 import { applyPhysics, clampVelocity } from './physics';
 import { renderFrame, initWebGL } from './renderer';
+
+const useDevicePixelRatio = () => {
+  const [pixelRatio, setPixelRatio] = useState(1);
+
+  useEffect(() => {
+    const updatePixelRatio = () => {
+      setPixelRatio(window.devicePixelRatio || 1);
+    };
+
+    updatePixelRatio();
+    window.addEventListener('resize', updatePixelRatio);
+    return () => window.removeEventListener('resize', updatePixelRatio);
+  }, []);
+
+  return pixelRatio;
+};
 
 export const useNetworkEngine = (config: EngineConfig) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
