@@ -15,7 +15,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata = {
-  title: 'Your Brand - Digital Innovation Agency',
+  title: 'Nemesis- Digital Innovation Agency',
   description: 'We create cutting-edge digital experiences with modern web technologies.',
 };
 

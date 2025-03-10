@@ -11,27 +11,27 @@ import {
 
 const founders = [
   {
-    name: "John Smith",
+    name: "Lance Valle",
     role: "CEO & Lead Developer",
-    image: "/founders/john.jpg",
-    bio: "With over 10 years of experience in web development, John leads our technical team with expertise in modern web technologies and architecture.",
+    image: "/assets/images/lance.png",
+    bio: "With over 10 years of experience in web development, Lance leads our technical team with expertise in modern web technologies and architecture.",
     social: {
-      email: "john@nemesis.com",
-      phone: "+1 (555) 123-4567",
-      location: "San Francisco, CA",
-      website: "https://johnsmith.dev"
+      email: "lance@nemesis.com",
+      phone: "+639288988692",
+      location: "Naga City, Philippines",
+      website: "https://nemesis.com"
     }
   },
   {
-    name: "Sarah Chen",
+    name: "Alyssa Lyn Jecomo",
     role: "CTO & Design Lead",
-    image: "/founders/sarah.jpg",
-    bio: "Sarah brings a unique blend of technical expertise and creative vision, specializing in UI/UX design and frontend development.",
+    image: "/assets/images/alyssa.png",
+    bio: "Alyssa brings a unique blend of technical expertise and creative vision, specializing in UI/UX design and frontend development.",
     social: {
-      email: "sarah@nemesis.com",
-      phone: "+1 (555) 234-5678",
-      location: "New York, NY",
-      website: "https://sarahchen.design"
+      email: "alyssa@nemesis.com",
+      phone: "+63912345678",
+      location: "Baguio, Philippines",
+      website: "https://nemesis.com"
     }
   }
 ];
@@ -96,7 +96,7 @@ export default function MeetTheFounders() {
                       className="object-cover"
                     />
                   </div>
-
+                  
                   {/* Info */}
                   <div className="mt-6">
                     <h3 className="text-2xl font-semibold text-white">
@@ -109,7 +109,7 @@ export default function MeetTheFounders() {
                       {founder.bio}
                     </p>
                   </div>
-
+                  
                   {/* Social Links */}
                   <div className="mt-6 grid grid-cols-2 gap-4">
                     <a

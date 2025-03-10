@@ -20,7 +20,7 @@ const item = {
 
 export default function MissionVision() {
   return (
-    <section className="py-24 sm:py-32">
+    <section id="mission-vision" className="py-24 sm:py-32">
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

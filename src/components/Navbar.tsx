@@ -6,46 +6,50 @@ import Link from 'next/link';
 import { theme } from '@/lib/theme';
 
 const navItems = [
-  { name: 'Home', href: '#' },
-  { name: 'Services', href: '#features' },
-  { name: 'Portfolio', href: '#portfolio' },
-  { name: 'About', href: '#about' },
-  { name: 'Contact', href: '#contact' },
+  { name: 'Home', href: '/' },
+  { name: 'Features', href: '/#features' },
+  { name: 'Portfolio', href: '/#portfolio' },
+  { name: 'About', href: '/#mission-vision' },
+  { name: 'Team', href: '/#team' },
+  { name: 'FAQ', href: '/#faq' },
+  { name: 'Contact', href: '/#contact' },
 ] as const;
 
 const Logo = () => (
-  <motion.div
-    className="relative group cursor-pointer"
-    whileHover="hover"
-  >
-    <motion.span
-      className="text-2xl font-bold tracking-tight"
-      style={{ 
-        background: theme.effects.gradientText,
-        WebkitBackgroundClip: 'text',
-        WebkitTextFillColor: 'transparent',
-      }}
-      variants={{
-        hover: {
-          scale: 1.05,
-          textShadow: "0 0 8px rgba(0, 255, 255, 0.3)",
-        }
-      }}
-    >
-      NEMESIS
-    </motion.span>
+  <Link href="/">
     <motion.div
-      className="absolute -inset-x-2 -inset-y-1 rounded-lg"
-      variants={{
-        hover: {
-          background: `radial-gradient(circle, ${theme.colors.primary}10 0%, transparent 70%)`,
-        }
-      }}
-      transition={{
-        duration: 0.3,
-      }}
-    />
-  </motion.div>
+      className="relative group cursor-pointer"
+      whileHover="hover"
+    >
+      <motion.span
+        className="text-2xl font-bold tracking-tight"
+        style={{ 
+          background: theme.effects.gradientText,
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+        }}
+        variants={{
+          hover: {
+            scale: 1.05,
+            textShadow: "0 0 8px rgba(0, 255, 255, 0.3)",
+          }
+        }}
+      >
+        NEMESIS
+      </motion.span>
+      <motion.div
+        className="absolute -inset-x-2 -inset-y-1 rounded-lg"
+        variants={{
+          hover: {
+            background: `radial-gradient(circle, ${theme.colors.primary}10 0%, transparent 70%)`,
+          }
+        }}
+        transition={{
+          duration: 0.3,
+        }}
+      />
+    </motion.div>
+  </Link>
 );
 
 const Navbar = () => {
@@ -64,6 +68,28 @@ const Navbar = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href === '/') {
+      return;
+    }
+    
+    e.preventDefault();
+    const targetId = href.replace('/#', '');
+    const element = document.getElementById(targetId);
+    
+    if (element) {
+      const offsetTop = element.offsetTop;
+      window.scrollTo({
+        top: offsetTop - 100, // Adjust for navbar height
+        behavior: 'smooth'
+      });
+      setActiveItem(href);
+      if (isMobileMenuOpen) {
+        setIsMobileMenuOpen(false);
+      }
+    }
+  };
 
   // Prevent hydration issues by not rendering motion elements until mounted
   if (!mounted) {
@@ -133,9 +159,7 @@ const Navbar = () => {
         >
           <div className="flex h-16 items-center justify-between">
             <div className="flex items-center">
-              <Link href="/">
-                <Logo />
-              </Link>
+              <Logo />
             </div>
 
             {/* Desktop menu */}
@@ -146,12 +170,12 @@ const Navbar = () => {
                     key={item.name}
                     href={item.href}
                     className="relative group"
-                    onClick={() => setActiveItem(item.name)}
+                    onClick={(e) => handleNavClick(e, item.href)}
                   >
                     <motion.span
                       className="relative z-10 px-3 py-2 text-sm font-medium transition-colors duration-200"
                       style={{ 
-                        color: activeItem === item.name 
+                        color: activeItem === item.href 
                           ? theme.colors.primary 
                           : theme.colors.text.secondary 
                       }}
@@ -162,7 +186,7 @@ const Navbar = () => {
                     <motion.span
                       className="absolute inset-0 -z-10 rounded-md"
                       initial={false}
-                      animate={activeItem === item.name ? {
+                      animate={activeItem === item.href ? {
                         backgroundColor: `${theme.colors.primary}10`,
                       } : {
                         backgroundColor: "transparent",
@@ -226,15 +250,12 @@ const Navbar = () => {
                   <Link
                     key={item.name}
                     href={item.href}
-                    onClick={() => {
-                      setActiveItem(item.name);
-                      setIsMobileMenuOpen(false);
-                    }}
+                    onClick={(e) => handleNavClick(e, item.href)}
                   >
                     <motion.div
                       className="block rounded-md px-3 py-2 text-base font-medium"
                       style={{ 
-                        color: activeItem === item.name 
+                        color: activeItem === item.href 
                           ? theme.colors.primary 
                           : theme.colors.text.secondary 
                       }}
