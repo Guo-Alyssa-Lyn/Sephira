@@ -1,6 +1,12 @@
 import path from 'path';
 
-export default ({ env }) => {
+interface Env {
+  (key: string, defaultValue?: string): string | undefined;
+  int(key: string, defaultValue?: number): number;
+  bool(key: string, defaultValue?: boolean): boolean;
+}
+
+export default ({ env }: { env: Env }) => {
   const client = env('DATABASE_CLIENT', 'sqlite');
 
   const connections = {
