@@ -1,5 +1,6 @@
 interface Env {
   (key: string): string | undefined;
+  bool(key: string, defaultValue?: boolean): boolean;
 }
 
 export default ({ env }: { env: Env }) => ({

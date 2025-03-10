@@ -44,19 +44,19 @@ const contactInfo = [
   {
     icon: EnvelopeIcon,
     title: 'Email',
-    content: 'contact@nemesis.com',
-    link: 'mailto:contact@nemesis.com'
+    content: 'lancevalle0428@nemesis.com',
+    link: 'mailto:lancevalle0428@nemesis.com'
   },
   {
     icon: PhoneIcon,
     title: 'Phone',
-    content: '+1 (555) 123-4567',
-    link: 'tel:+15551234567'
+    content: '+639288988692',
+    link: 'tel:+639288988692'
   },
   {
     icon: MapPinIcon,
     title: 'Location',
-    content: 'San Francisco, CA',
+    content: 'Naga City, Philippines',
     link: 'https://maps.google.com'
   },
   {
@@ -67,21 +67,21 @@ const contactInfo = [
   }
 ];
 
-const projectTypes = [
-  'Custom Web Application Development',
-  'E-commerce Platform Development',
-  'Progressive Web App (PWA) Development',
-  'UI/UX Design & Prototyping',
-  'Search Engine Optimization (SEO)',
-  'Content Management System (CMS) Development',
-  'API Development & Integration',
-  'Cloud Migration & Optimization',
-  'Digital Marketing Strategy',
-  'Social Media Marketing',
-  'Artificial Intelligence Solutions',
-  'Software Maintenance & Support',
-  'Technical Consulting & Strategy'
-];
+  const projectTypes = [
+    'Custom Web Application Development',
+    'E-commerce Platform Development',
+    'Progressive Web App (PWA) Development',
+    'UI/UX Design & Prototyping',
+    'Search Engine Optimization (SEO)',
+    'Content Management System (CMS) Development',
+    'API Development & Integration',
+    'Cloud Migration & Optimization',
+    'Digital Marketing Strategy',
+    'Social Media Marketing',
+    'Artificial Intelligence Solutions',
+    'Software Maintenance & Support',
+    'Technical Consulting & Strategy'
+  ];
 
 const socialMediaFields = [
   {
@@ -322,14 +322,14 @@ const ContactForm: React.FC = () => {
                       <FiAlertCircle className="h-5 w-5 text-red-400" />
                     </div>
                   )}
-                </div>
+                  </div>
                 {errors.name && (
                   <p className="mt-1 text-sm text-red-400 flex items-center gap-1">
                     <FiAlertCircle className="h-4 w-4" />
                     {errors.name}
                   </p>
                 )}
-              </div>
+                </div>
 
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-1">
@@ -353,7 +353,7 @@ const ContactForm: React.FC = () => {
                   {errors.email && (
                     <div className="absolute right-3 top-1/2 -translate-y-1/2">
                       <FiAlertCircle className="h-5 w-5 text-red-400" />
-                    </div>
+                </div>
                   )}
                 </div>
                 {errors.email && (
@@ -362,7 +362,7 @@ const ContactForm: React.FC = () => {
                     {errors.email}
                   </p>
                 )}
-              </div>
+          </div>
 
               <div>
                 <label htmlFor="phone" className="block text-sm font-medium text-gray-300 mb-1">
@@ -386,7 +386,7 @@ const ContactForm: React.FC = () => {
                   {errors.phone && (
                     <div className="absolute right-3 top-1/2 -translate-y-1/2">
                       <FiAlertCircle className="h-5 w-5 text-red-400" />
-                    </div>
+                  </div>
                   )}
                 </div>
                 {errors.phone && (
@@ -405,15 +405,15 @@ const ContactForm: React.FC = () => {
               </h4>
               <div className="space-y-2">
                 {socialMediaFields.map((field) => (
-                  <div key={field.name}>
+                        <div key={field.name}>
                     <label htmlFor={field.name} className="block text-sm font-medium text-gray-300 mb-1">
-                      {field.label}
-                    </label>
+                            {field.label}
+                          </label>
                     <div className="relative">
                       <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                         <field.icon className="h-4 w-4 text-gray-400" />
                       </div>
-                      <input
+                            <input
                         type="url"
                         id={field.name}
                         name={field.name}
@@ -427,9 +427,9 @@ const ContactForm: React.FC = () => {
                         placeholder={field.placeholder}
                       />
                     </div>
-                  </div>
-                ))}
-              </div>
+                        </div>
+                      ))}
+                    </div>
             </div>
 
             <motion.button
@@ -450,24 +450,24 @@ const ContactForm: React.FC = () => {
             <div>
               <label htmlFor="projectType" className="block text-sm font-medium text-gray-300">
                 Project Type
-              </label>
-              <select
+                      </label>
+                      <select
                 id="projectType"
                 name="projectType"
-                value={formData.projectType}
+                        value={formData.projectType}
                 onChange={handleChange}
                 className="mt-1 block w-full rounded-lg border border-gray-700 bg-[#1a1a1a] px-4 py-3 text-white placeholder-gray-400 focus:border-primary-purple focus:outline-none focus:ring-1 focus:ring-primary-purple appearance-none"
                 required
-              >
+                      >
                 <option value="" className="bg-[#1a1a1a]">Select a project type</option>
-                {projectTypes.map((type) => (
+                        {projectTypes.map((type) => (
                   <option key={type} value={type} className="bg-[#1a1a1a]">{type}</option>
-                ))}
-              </select>
-              {errors.projectType && (
+                        ))}
+                      </select>
+                      {errors.projectType && (
                 <p className="mt-1 text-sm text-red-400">{errors.projectType}</p>
-              )}
-            </div>
+                      )}
+                    </div>
 
             <div>
               <label htmlFor="budget" className="block text-sm font-medium text-gray-300">
@@ -492,27 +492,27 @@ const ContactForm: React.FC = () => {
             <div>
               <label htmlFor="message" className="block text-sm font-medium text-gray-300">
                 Project Details
-              </label>
-              <textarea
+                      </label>
+                      <textarea
                 id="message"
                 name="message"
-                value={formData.message}
+                        value={formData.message}
                 onChange={handleChange}
                 rows={8}
                 className="mt-1 block w-full h-80 rounded-lg border border-gray-700 bg-[#1a1a1a] px-4 py-3 text-white placeholder-gray-400 focus:border-primary-purple focus:outline-none focus:ring-1 focus:ring-primary-purple resize-none"
                 placeholder="Tell us about your project requirements, goals, and any specific features you'd like to include."
                 required
-              />
-              {errors.message && (
+                      />
+                      {errors.message && (
                 <p className="mt-1 text-sm text-red-400">{errors.message}</p>
               )}
-            </div>
+                    </div>
 
             <div>
               <label className="block text-sm font-medium text-gray-300">
                 Attach Files (Optional)
-              </label>
-              <div
+                      </label>
+                      <div
                 className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-700 border-dashed rounded-lg bg-[#1a1a1a]"
                 onDragOver={(e) => e.preventDefault()}
                 onDrop={(e) => {
@@ -542,45 +542,45 @@ const ContactForm: React.FC = () => {
                       />
                     </label>
                     <p className="pl-1">or drag and drop</p>
-                  </div>
+                    </div>
                   <p className="text-xs text-gray-400">
                     PDF, DOC, DOCX up to 5MB
-                  </p>
-                </div>
-              </div>
+                        </p>
+                      </div>
+                    </div>
               {errors.file && (
                 <p className="mt-1 text-sm text-red-400">{errors.file}</p>
-              )}
+                )}
             </div>
 
             <div className="flex gap-4">
-              <motion.button
-                type="button"
+                  <motion.button
+                    type="button"
                 onClick={handleBack}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 className="btn-secondary flex-1 flex items-center justify-center gap-2"
               >
                 <FiArrowLeft className="w-4 h-4" /> Back
-              </motion.button>
-              <motion.button
-                type="submit"
+                  </motion.button>
+                  <motion.button
+                    type="submit"
                 disabled={isSubmitting}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 className="btn-primary flex-1 flex items-center justify-center gap-2"
-              >
-                {isSubmitting ? (
-                  <>
+                  >
+                    {isSubmitting ? (
+                      <>
                     <span className="animate-spin">⏳</span> Submitting...
-                  </>
-                ) : (
+                      </>
+                    ) : (
                   <>
                     Submit <FiCheckCircle className="w-4 h-4" />
                   </>
                 )}
               </motion.button>
-            </div>
+              </div>
           </div>
         );
 
@@ -658,11 +658,11 @@ const ContactForm: React.FC = () => {
             {/* Feedback Messages */}
             <div className="mt-8">
               <FeedbackMessages className="h-[500px]" />
-            </div>
+          </div>
           </motion.div>
 
           {/* Contact Form */}
-          <motion.div
+              <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -697,11 +697,11 @@ const ContactForm: React.FC = () => {
                     {renderStep()}
                   </AnimatePresence>
                 </div>
-              </div>
+          </div>
             </form>
-          </motion.div>
-        </div>
+        </motion.div>
       </div>
+    </div>
     </section>
   );
 };
