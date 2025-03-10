@@ -33,17 +33,20 @@ const NetworkVisualization = () => {
 
   // Gesture handling
   const bind = useGesture({
-    onMove: ({ xy: [x, y] }) => {
+    onMove: ({ event }) => {
       // Handle magnetic hover effect
+      const { clientX, clientY } = event;
     },
-    onPinch: ({ origin: [x, y], delta: [d] }) => {
+    onPinch: ({ event }) => {
       // Handle zoom
+      const { clientX, clientY } = event;
     },
     onDrag: ({ movement: [mx, my], velocity }) => {
       // Handle momentum-based dragging
     },
-    onDoubleClick: ({ xy: [x, y] }) => {
+    onDoubleClick: ({ event }) => {
       // Handle zoom focus
+      const { clientX, clientY } = event;
     }
   });
 
