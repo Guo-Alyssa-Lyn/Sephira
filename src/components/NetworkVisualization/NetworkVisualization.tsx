@@ -32,7 +32,7 @@ const NetworkVisualization = () => {
   }));
 
   // Helper function to get coordinates from different event types
-  const getEventCoordinates = (event: TouchEvent | PointerEvent | WheelEvent | WebKitGestureEvent) => {
+  const getEventCoordinates = (event: TouchEvent | PointerEvent | WheelEvent) => {
     if (event instanceof TouchEvent) {
       const touch = event.touches[0];
       return { x: touch.clientX, y: touch.clientY };
@@ -43,25 +43,25 @@ const NetworkVisualization = () => {
     if (event instanceof WheelEvent) {
       return { x: event.clientX, y: event.clientY };
     }
-    // For WebKitGestureEvent, we'll use the center point
+    // Fallback to center point if event type is not recognized
     return { x: 0, y: 0 };
   };
 
   // Gesture handling
   const bind = useGesture({
     onMove: ({ event }) => {
-      const { x, y } = getEventCoordinates(event);
+      const { x, y } = getEventCoordinates(event as TouchEvent | PointerEvent | WheelEvent);
       // Handle magnetic hover effect
     },
     onPinch: ({ event }) => {
-      const { x, y } = getEventCoordinates(event);
+      const { x, y } = getEventCoordinates(event as TouchEvent | PointerEvent | WheelEvent);
       // Handle zoom
     },
     onDrag: ({ movement: [mx, my], velocity }) => {
       // Handle momentum-based dragging
     },
     onDoubleClick: ({ event }) => {
-      const { x, y } = getEventCoordinates(event);
+      const { x, y } = getEventCoordinates(event as TouchEvent | PointerEvent | WheelEvent);
       // Handle zoom focus
     }
   });
