@@ -1,6 +1,6 @@
-import { Node, Connection, PhysicsParams } from './types';
+import { NetworkNode, Connection, PhysicsParams } from './types';
 
-export const applyPhysics = (nodes: Node[], connections: Connection[], params: PhysicsParams) => {
+export const applyPhysics = (nodes: NetworkNode[], connections: Connection[], params: PhysicsParams) => {
   nodes.forEach(node => {
     // Apply forces
     node.velocity.x *= (1 - params.friction);

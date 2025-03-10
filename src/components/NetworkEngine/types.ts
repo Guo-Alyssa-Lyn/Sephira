@@ -5,7 +5,7 @@ export interface PhysicsParams {
   gravity: number;
 }
 
-export interface Node {
+export interface NetworkNode {
   x: number;
   y: number;
   velocity: { x: number; y: number };

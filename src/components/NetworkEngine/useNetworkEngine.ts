@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, useCallback } from 'react';
 import { useDebounce, useOrientation } from 'react-use';
-import { PhysicsParams, Node, Connection, EngineConfig } from './types';
-import { createQuadTree, updateQuadTree } from './quadTree';
+import { PhysicsParams, NetworkNode, Connection, EngineConfig } from './types';
+import { createQuadTree, updateQuadTree, QuadTree } from './quadTree';
 import { applyPhysics, clampVelocity } from './physics';
 import { renderFrame, initWebGL } from './renderer';
 
@@ -24,12 +24,12 @@ const useDevicePixelRatio = () => {
 export const useNetworkEngine = (config: EngineConfig) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const webglRef = useRef<WebGLRenderingContext | null>(null);
-  const [nodes, setNodes] = useState<Node[]>([]);
+  const [nodes, setNodes] = useState<NetworkNode[]>([]);
   const [connections, setConnections] = useState<Connection[]>([]);
   const pixelRatio = useDevicePixelRatio();
   const orientation = useOrientation();
   const lastTime = useRef(performance.now());
-  const quadTree = useRef(createQuadTree());
+  const quadTree = useRef<QuadTree>(createQuadTree([]));
 
   // Initialize network with error boundary
   useEffect(() => {
@@ -42,7 +42,7 @@ export const useNetworkEngine = (config: EngineConfig) => {
         webglRef.current = initWebGL(canvas) || null;
         
         // Initialize nodes with golden ratio spacing
-        const initialNodes = Array.from({ length: config.nodeCount }, (_, i) => {
+        const initialNodes: NetworkNode[] = Array.from({ length: config.nodeCount }, (_, i) => {
           const angle = i * Math.PI * (3 - Math.sqrt(5));
           const radius = Math.sqrt(i / config.nodeCount);
           return {
@@ -82,8 +82,10 @@ export const useNetworkEngine = (config: EngineConfig) => {
 
       // Update physics
       const updatedNodes = nodes.map(node => {
-        const updated = applyPhysics(node, delta, config.physics);
-        return clampVelocity(updated, config.maxVelocity);
+        const updatedNode = { ...node };
+        applyPhysics([updatedNode], connections, config.physics);
+        updatedNode.velocity = clampVelocity(updatedNode.velocity, config.maxVelocity);
+        return updatedNode;
       });
 
       // Update quad tree
@@ -91,7 +93,7 @@ export const useNetworkEngine = (config: EngineConfig) => {
 
       // Render frame
       if (webglRef.current) {
-        renderFrame(webglRef.current, updatedNodes, connections, pixelRatio);
+        renderFrame(webglRef.current, updatedNodes, connections);
       } else {
         const ctx = canvas.getContext('2d');
         if (ctx) {
@@ -105,7 +107,7 @@ export const useNetworkEngine = (config: EngineConfig) => {
     } catch (error) {
       console.error('Animation frame error:', error);
     }
-  }, [nodes, connections, pixelRatio, config]);
+  }, [nodes, connections, config]);
 
   useEffect(() => {
     const frame = requestAnimationFrame(animate);

@@ -1,4 +1,4 @@
-import { Node, Connection } from './types';
+import { NetworkNode, Connection } from './types';
 
 export const initWebGL = (canvas: HTMLCanvasElement) => {
   const gl = canvas.getContext('webgl');
@@ -14,7 +14,7 @@ export const initWebGL = (canvas: HTMLCanvasElement) => {
   return gl;
 };
 
-export const renderFrame = (gl: WebGLRenderingContext, nodes: Node[], connections: Connection[]) => {
+export const renderFrame = (gl: WebGLRenderingContext, nodes: NetworkNode[], connections: Connection[]) => {
   // Clear the canvas
   gl.clear(gl.COLOR_BUFFER_BIT);
 

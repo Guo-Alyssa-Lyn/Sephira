@@ -1,3 +1,5 @@
+import { NetworkNode } from './types';
+
 export interface QuadTree {
   bounds: {
     x: number;
@@ -5,12 +7,12 @@ export interface QuadTree {
     width: number;
     height: number;
   };
-  nodes: Node[];
+  nodes: NetworkNode[];
   divided: boolean;
   children?: QuadTree[];
 }
 
-export const createQuadTree = (nodes: Node[]): QuadTree => {
+export const createQuadTree = (nodes: NetworkNode[]): QuadTree => {
   return {
     bounds: { x: 0, y: 0, width: 1, height: 1 },
     nodes,
@@ -18,7 +20,7 @@ export const createQuadTree = (nodes: Node[]): QuadTree => {
   };
 };
 
-export const updateQuadTree = (tree: QuadTree, nodes: Node[]): QuadTree => {
+export const updateQuadTree = (tree: QuadTree, nodes: NetworkNode[]): QuadTree => {
   return {
     ...tree,
     nodes
