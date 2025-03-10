@@ -102,9 +102,9 @@ const ParticlesBackground = ({ className = '', variant = 'default' }: ParticlesB
     <Particles
       className={`absolute inset-0 -z-10 ${className}`}
       id="tsparticles"
-      init={particlesInit}
+      particlesInit={particlesInit}
       options={getConfig(variant)}
-      loaded={async () => {}}
+      particlesLoaded={async () => {}}
     />
   );
 };
