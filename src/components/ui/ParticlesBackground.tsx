@@ -104,6 +104,7 @@ const ParticlesBackground = ({ className = '', variant = 'default' }: ParticlesB
       id="tsparticles"
       init={particlesInit}
       options={getConfig(variant)}
+      loaded={async () => {}}
     />
   );
 };
