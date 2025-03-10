@@ -1,27 +1,37 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
-import ClientInit from "@/components/ClientInit";
+import './globals.css';
+import { Inter, JetBrains_Mono } from 'next/font/google';
+import { theme } from '@/lib/theme';
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-sans',
+  display: 'swap',
+});
 
-export const metadata: Metadata = {
-  title: "Nemesis - Affordable Web Development Services",
-  description: "Professional and affordable web development services based in the Philippines. We specialize in modern design and development solutions.",
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  variable: '--font-mono',
+  display: 'swap',
+});
+
+export const metadata = {
+  title: 'Your Brand - Digital Innovation Agency',
+  description: 'We create cutting-edge digital experiences with modern web technologies.',
 };
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.className} antialiased`} suppressHydrationWarning>
-        <ClientInit />
-        <div className="min-h-screen bg-white">
-          {children}
-        </div>
+    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`}>
+      <body
+        style={{
+          background: `linear-gradient(to bottom, ${theme.colors.background.gradient.from}, ${theme.colors.background.gradient.via}, ${theme.colors.background.gradient.to})`,
+        }}
+      >
+        {children}
       </body>
     </html>
   );

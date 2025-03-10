@@ -1,24 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground: #FFFFFF;
-  --background: #0B1120;
-}
-
 @layer base {
+  :root {
+    --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
   html {
-    scroll-behavior: smooth !important;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    background: var(--background);
-    color: var(--foreground);
+    scroll-behavior: smooth;
   }
 
   body {
-    min-height: 100vh;
-    background: linear-gradient(to bottom, #0B1120, #131B2C, #1E293B);
+    @apply bg-black text-white;
+    font-family: var(--font-sans);
   }
 }
 
@@ -28,36 +27,165 @@
   }
 
   .btn-primary {
-    @apply rounded-md bg-[#4F46E5] px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-[#4338CA] transition-all duration-300;
+    @apply relative rounded-lg bg-gradient-to-r from-cyan-400 to-cyan-600 px-6 py-3 text-sm font-semibold text-white shadow-lg transition-all duration-300 hover:shadow-xl hover:shadow-cyan-400/20;
   }
 
   .btn-secondary {
-    @apply text-sm font-semibold leading-6 text-[#94A3B8] hover:text-white transition-colors duration-300;
+    @apply rounded-lg border border-cyan-400 px-6 py-3 text-sm font-semibold text-cyan-400 transition-all duration-300 hover:bg-cyan-400 hover:text-white;
+  }
+
+  .section-title {
+    @apply text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl;
+  }
+
+  .section-subtitle {
+    @apply mt-6 text-lg leading-8 text-gray-300;
+  }
+
+  .card {
+    @apply rounded-xl bg-white/5 p-6 backdrop-blur-sm transition-all duration-300 hover:bg-white/10;
   }
 }
 
 @layer utilities {
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#4F46E5] to-[#818CF8];
+    background: linear-gradient(to right, #00ffff, #0891b2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-accent {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#00F5FF] to-[#06B6D4];
+  }
+
+  .glass {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  .network-node {
+    @apply absolute w-1 h-1 rounded-full bg-cyan-400;
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .network-line {
+    @apply absolute bg-cyan-400/20;
+    height: 1px;
+    transform-origin: left center;
   }
 }
 
-/* Custom scrollbar styles */
+/* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #0B1120;
+  background: #000000;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1E293B;
+  background: #00ffff20;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #2D3B4E;
+  background: #00ffff40;
+}
+
+/* Selection color */
+::selection {
+  background-color: #00ffff20;
+  color: #ffffff;
+}
+
+/* Focus outline */
+:focus {
+  outline: 2px solid #00ffff40;
+  outline-offset: 2px;
+}
+
+/* Loading animation */
+.loading-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.loading-spin {
+  animation: spin 4s linear infinite;
+}
+
+/* Smooth transitions */
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+/* Smooth reveal animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease-out;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Magnetic button effect */
+.magnetic-button {
+  transition: transform 0.3s cubic-bezier(0.21, 0.39, 0, 1.165);
+}
+
+.magnetic-button:hover {
+  transform: scale(1.05);
+}
+
+/* Scroll indicator animation */
+@keyframes scroll {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(8px);
+    opacity: 0;
+  }
+}
+
+.animate-scroll {
+  animation: scroll 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(0.95);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(0, -10px);
+  }
 }
 
 /* Prevent FOUC */

@@ -1,140 +1,131 @@
 'use client';
 
-import { motion, useMotionTemplate, useMotionValue } from 'framer-motion';
-import { HiOutlineLightBulb, HiOutlineChartSquareBar } from 'react-icons/hi';
-import { useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { LightBulbIcon, SparklesIcon } from '@heroicons/react/24/outline';
 
-const FloatingShapes = () => {
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      mouseX.set(e.clientX);
-      mouseY.set(e.clientY);
-    };
-    
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
-
-  return (
-    <div className="absolute inset-0 pointer-events-none">
-      <motion.div
-        className="absolute w-[300px] h-[300px] bg-gradient-to-r from-indigo-500/20 to-purple-500/20 blur-3xl opacity-10"
-        style={{
-          x: useMotionTemplate`calc(${mouseX}px - 150px)`,
-          y: useMotionTemplate`calc(${mouseY}px - 150px)`,
-        }}
-      />
-    </div>
-  );
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
 };
 
-const ValueCard = ({ 
-  icon: Icon,
-  title,
-  children,
-  color
-}: {
-  icon: React.ElementType,
-  title: string,
-  children: React.ReactNode,
-  color: string
-}) => (
-  <motion.div
-    initial={{ opacity: 0, y: 30 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, margin: "-100px" }}
-    className={`relative overflow-hidden rounded-3xl p-px backdrop-blur-xl transition-all hover:shadow-2xl hover:shadow-${color}-500/20`}
-    whileHover={{ scale: 1.02 }}
-  >
-    <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent" />
-    <div className="relative h-full bg-gradient-to-b from-white/5 to-white/2 rounded-3xl p-8">
-      <div className="flex flex-col items-center text-center">
-        <div className={`relative mb-8`}>
-          <div className={`absolute inset-0 bg-${color}-500/10 blur-3xl`} />
-          <div className={`relative w-20 h-20 rounded-2xl bg-${color}-500/5 flex items-center justify-center border border-${color}-500/10`}>
-            <Icon className={`w-10 h-10 text-${color}-500`} />
-          </div>
-        </div>
-        
-        <h3 className="text-2xl font-semibold text-gray-900 mb-4">
-          {title}
-        </h3>
-        
-        <div className="text-base leading-relaxed text-gray-600 space-y-4">
-          {children}
-        </div>
-      </div>
-    </div>
-  </motion.div>
-);
+const item = {
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0 },
+};
 
-const MissionVision = () => {
+export default function MissionVision() {
   return (
-    <section className="relative py-24 px-4 bg-white">
-      <div className="max-w-7xl mx-auto relative z-10">
+    <section className="py-24 sm:py-32">
+      <div className="container">
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-20"
+          transition={{ duration: 0.6 }}
+          className="mx-auto max-w-2xl text-center"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Core Philosophy
+          <h2 className="section-title">
+            Our <span className="text-gradient">Mission</span> & Vision
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Guiding principles that shape our digital craftsmanship and client relationships
+          <p className="section-subtitle">
+            We're on a mission to transform the digital landscape through innovative web solutions
+            that empower businesses to thrive in the modern age.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-          <ValueCard
-            icon={HiOutlineChartSquareBar}
-            title="Strategic Mission"
-            color="indigo"
+        <motion.div
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          className="mt-16 grid grid-cols-1 gap-8 lg:grid-cols-2"
+        >
+          {/* Mission */}
+          <motion.div
+            variants={item}
+            className="group relative overflow-hidden rounded-2xl bg-white/5 p-8 backdrop-blur-sm"
           >
-            <ul className="space-y-4 text-left">
-              <li className="flex items-center gap-3">
-                <div className="w-2 h-2 bg-indigo-500 rounded-full" />
-                Empower businesses through innovative digital solutions
-              </li>
-              <li className="flex items-center gap-3">
-                <div className="w-2 h-2 bg-indigo-500 rounded-full" />
-                Drive measurable growth through user-centric design
-              </li>
-              <li className="flex items-center gap-3">
-                <div className="w-2 h-2 bg-indigo-500 rounded-full" />
-                Deliver cutting-edge technologies with precision
-              </li>
-            </ul>
-          </ValueCard>
+            <div className="absolute inset-0 bg-gradient-to-br from-primary-purple/20 to-accent-electric/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+            <div className="relative">
+              <div className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary-purple/10 text-primary-purple">
+                <LightBulbIcon className="h-6 w-6" aria-hidden="true" />
+              </div>
+              <h3 className="text-2xl font-semibold text-white">Our Mission</h3>
+              <p className="mt-4 text-gray-300">
+                To empower businesses with cutting-edge web solutions that drive growth,
+                enhance user experience, and create lasting digital impact. We strive to
+                make advanced web technologies accessible and beneficial for businesses
+                of all sizes.
+              </p>
+            </div>
+          </motion.div>
 
-          <ValueCard
-            icon={HiOutlineLightBulb}
-            title="Visionary Outlook"
-            color="purple"
+          {/* Vision */}
+          <motion.div
+            variants={item}
+            className="group relative overflow-hidden rounded-2xl bg-white/5 p-8 backdrop-blur-sm"
           >
-            <ul className="space-y-4 text-left">
-              <li className="flex items-center gap-3">
-                <div className="w-2 h-2 bg-purple-500 rounded-full" />
-                Redefine industry standards for digital excellence
-              </li>
-              <li className="flex items-center gap-3">
-                <div className="w-2 h-2 bg-purple-500 rounded-full" />
-                Pioneer transformative web experiences
-              </li>
-              <li className="flex items-center gap-3">
-                <div className="w-2 h-2 bg-purple-500 rounded-full" />
-                Create universal access to strategic web solutions
-              </li>
-            </ul>
-          </ValueCard>
-        </div>
+            <div className="absolute inset-0 bg-gradient-to-br from-primary-purple/20 to-accent-electric/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+            <div className="relative">
+              <div className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-accent-electric/10 text-accent-electric">
+                <SparklesIcon className="h-6 w-6" aria-hidden="true" />
+              </div>
+              <h3 className="text-2xl font-semibold text-white">Our Vision</h3>
+              <p className="mt-4 text-gray-300">
+                To be the leading force in web innovation, setting new standards for
+                digital excellence. We envision a future where every business has access
+                to powerful, user-friendly web solutions that propel them forward in
+                the digital economy.
+              </p>
+            </div>
+          </motion.div>
+        </motion.div>
+
+        {/* Values */}
+        <motion.div
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          className="mt-16 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4"
+        >
+          {[
+            {
+              name: 'Innovation',
+              description: 'Pushing boundaries with cutting-edge technologies and creative solutions.',
+            },
+            {
+              name: 'Excellence',
+              description: 'Delivering the highest quality work with attention to every detail.',
+            },
+            {
+              name: 'Collaboration',
+              description: 'Working closely with clients to achieve their goals together.',
+            },
+            {
+              name: 'Integrity',
+              description: 'Maintaining the highest standards of honesty and transparency.',
+            },
+          ].map((value, index) => (
+            <motion.div
+              key={value.name}
+              variants={item}
+              className="group relative overflow-hidden rounded-xl bg-white/5 p-6 backdrop-blur-sm"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-primary-purple/10 to-accent-electric/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+              <div className="relative">
+                <h4 className="text-lg font-semibold text-white">{value.name}</h4>
+                <p className="mt-2 text-sm text-gray-300">{value.description}</p>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
     </section>
   );
-};
-
-export default MissionVision;
+}

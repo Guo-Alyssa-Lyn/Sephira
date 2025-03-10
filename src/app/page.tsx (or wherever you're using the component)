@@ -1,0 +1,11 @@
+import MeetTheFounders from '@/components/MeetTheFounders';
+
+export default function Home() {
+  return (
+    <main>
+      {/* Other components */}
+      <MeetTheFounders />
+      {/* Other components */}
+    </main>
+  );
+} 
