@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
-import Particles from 'react-tsparticles';
-import { loadFull } from 'tsparticles';
-import type { Engine } from 'tsparticles-engine';
+import Particles from '@tsparticles/react';
+import { loadSlim } from '@tsparticles/slim';
+import type { Engine } from '@tsparticles/engine';
 
 interface ParticlesBackgroundProps {
   className?: string;
@@ -10,7 +10,7 @@ interface ParticlesBackgroundProps {
 
 const ParticlesBackground = ({ className = '', variant = 'default' }: ParticlesBackgroundProps) => {
   const particlesInit = useCallback(async (engine: Engine) => {
-    await loadFull(engine);
+    await loadSlim(engine);
   }, []);
 
   const getConfig = (variant: string) => {
@@ -26,7 +26,10 @@ const ParticlesBackground = ({ className = '', variant = 'default' }: ParticlesB
             enable: true,
             mode: 'repulse',
           },
-          resize: true,
+          resize: {
+            enable: true,
+            value: 0.5,
+          },
         },
         modes: {
           push: {
@@ -50,7 +53,7 @@ const ParticlesBackground = ({ className = '', variant = 'default' }: ParticlesB
           width: 1,
         },
         move: {
-          direction: 'none',
+          direction: 'none' as const,
           enable: true,
           outModes: {
             default: 'bounce',
