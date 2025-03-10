@@ -79,9 +79,9 @@ const Navbar = () => {
     const element = document.getElementById(targetId);
     
     if (element) {
-      const offsetTop = element.offsetTop;
+      const offsetTop = element.getBoundingClientRect().top + window.pageYOffset;
       window.scrollTo({
-        top: offsetTop - 100, // Adjust for navbar height
+        top: offsetTop - 80, // Adjust for navbar height
         behavior: 'smooth'
       });
       setActiveItem(href);
@@ -159,7 +159,9 @@ const Navbar = () => {
         >
           <div className="flex h-16 items-center justify-between">
             <div className="flex items-center">
-              <Logo />
+              <Link href="/">
+                <Logo />
+              </Link>
             </div>
 
             {/* Desktop menu */}
@@ -175,7 +177,7 @@ const Navbar = () => {
                     <motion.span
                       className="relative z-10 px-3 py-2 text-sm font-medium transition-colors duration-200"
                       style={{ 
-                        color: activeItem === item.href 
+                        color: activeItem === item.name 
                           ? theme.colors.primary 
                           : theme.colors.text.secondary 
                       }}
@@ -186,7 +188,7 @@ const Navbar = () => {
                     <motion.span
                       className="absolute inset-0 -z-10 rounded-md"
                       initial={false}
-                      animate={activeItem === item.href ? {
+                      animate={activeItem === item.name ? {
                         backgroundColor: `${theme.colors.primary}10`,
                       } : {
                         backgroundColor: "transparent",
@@ -255,7 +257,7 @@ const Navbar = () => {
                     <motion.div
                       className="block rounded-md px-3 py-2 text-base font-medium"
                       style={{ 
-                        color: activeItem === item.href 
+                        color: activeItem === item.name 
                           ? theme.colors.primary 
                           : theme.colors.text.secondary 
                       }}
