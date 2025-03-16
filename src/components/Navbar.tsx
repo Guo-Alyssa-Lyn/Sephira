@@ -10,7 +10,7 @@ const navItems = [
   { name: 'Features', href: '/#features' },
   { name: 'Portfolio', href: '/#portfolio' },
   { name: 'About', href: '/#mission-vision' },
-  { name: 'Team', href: '/#meet-ht-founders' },
+  { name: 'Team', href: '/#meet-the-founders' },
   { name: 'FAQ', href: '/#faq' },
   { name: 'Contact', href: '/#contact' },
 ] as const;
@@ -22,7 +22,7 @@ const Logo = () => (
       whileHover="hover"
     >
       <motion.span
-        className="text-2xl font-bold tracking-tight"
+        className="text-lg sm:text-2xl font-bold tracking-tight"
         style={{ 
           background: theme.effects.gradientText,
           WebkitBackgroundClip: 'text',
@@ -38,7 +38,7 @@ const Logo = () => (
         NEMESIS
       </motion.span>
       <motion.div
-        className="absolute -inset-x-2 -inset-y-1 rounded-lg"
+        className="absolute -inset-x-1.5 sm:-inset-x-2 -inset-y-0.5 sm:-inset-y-1 rounded-lg"
         variants={{
           hover: {
             background: `radial-gradient(circle, ${theme.colors.primary}10 0%, transparent 70%)`,
@@ -95,10 +95,10 @@ const Navbar = () => {
   if (!mounted) {
     return (
       <nav className="fixed left-0 right-0 top-0 z-50">
-        <div className="mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex h-16 items-center justify-between">
+        <div className="mx-auto px-3 sm:px-6 lg:px-8 py-2 sm:py-4">
+          <div className="flex h-12 sm:h-16 items-center justify-between">
             <div className="flex items-center">
-              <Link href="/" className="text-2xl font-bold tracking-tight text-white">
+              <Link href="/" className="text-lg sm:text-2xl font-bold tracking-tight text-white">
                 NEMESIS
               </Link>
             </div>
@@ -116,10 +116,10 @@ const Navbar = () => {
               </div>
             </div>
             <div className="flex md:hidden">
-              <button className="inline-flex items-center justify-center rounded-md p-2 text-gray-300">
+              <button className="inline-flex items-center justify-center rounded-md p-1.5 text-gray-300">
                 <span className="sr-only">Open main menu</span>
                 <svg
-                  className="h-6 w-6"
+                  className="h-5 w-5 sm:h-6 sm:w-6"
                   fill="none"
                   viewBox="0 0 24 24"
                   strokeWidth="1.5"
@@ -148,8 +148,8 @@ const Navbar = () => {
         className="fixed left-0 right-0 top-0 z-50"
       >
         <div 
-          className={`mx-auto px-4 sm:px-6 lg:px-8 transition-all duration-300 ${
-            isScrolled ? 'py-2' : 'py-4'
+          className={`mx-auto px-3 sm:px-6 lg:px-8 transition-all duration-300 ${
+            isScrolled ? 'py-1.5 sm:py-2' : 'py-2 sm:py-4'
           }`}
           style={{ 
             background: isScrolled ? theme.colors.background.dark : 'transparent',
@@ -157,7 +157,7 @@ const Navbar = () => {
             boxShadow: isScrolled ? '0 4px 30px rgba(0, 0, 0, 0.1)' : 'none',
           }}
         >
-          <div className="flex h-16 items-center justify-between">
+          <div className="flex h-12 sm:h-16 items-center justify-between">
             <div className="flex items-center">
               <Link href="/">
                 <Logo />
@@ -205,30 +205,25 @@ const Navbar = () => {
 
             {/* Mobile menu button */}
             <div className="flex md:hidden">
-              <motion.button
+              <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="inline-flex items-center justify-center rounded-md p-2"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                style={{ color: theme.colors.text.primary }}
+                className="inline-flex items-center justify-center rounded-md p-1.5 text-gray-300 hover:text-white focus:outline-none"
               >
                 <span className="sr-only">Open main menu</span>
-                <motion.svg
-                  className="h-6 w-6"
+                <svg
+                  className="h-5 w-5 sm:h-6 sm:w-6"
                   fill="none"
                   viewBox="0 0 24 24"
                   strokeWidth="1.5"
                   stroke="currentColor"
-                  animate={{ rotate: isMobileMenuOpen ? 90 : 0 }}
-                  transition={{ duration: 0.2 }}
                 >
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    d={isMobileMenuOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16M4 18h16'}
+                    d="M4 6h16M4 12h16M4 18h16"
                   />
-                </motion.svg>
-              </motion.button>
+                </svg>
+              </button>
             </div>
           </div>
         </div>

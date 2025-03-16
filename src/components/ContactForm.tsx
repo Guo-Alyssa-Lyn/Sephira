@@ -296,7 +296,7 @@ const ContactForm: React.FC = () => {
     switch (step) {
       case 1:
         return (
-          <div className="space-y-3 max-w-xl mx-auto w-full px-4">
+          <div className="space-y-3 max-w-xl mx-auto w-full px-3 sm:px-4">
             <div className="space-y-3">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-1">
@@ -313,23 +313,23 @@ const ContactForm: React.FC = () => {
                     onBlur={handleBlur}
                     className={`mt-1 block w-full rounded-lg border ${
                       isFocused === 'name' ? 'border-primary-purple' : 'border-gray-700'
-                    } bg-white/5 px-4 py-2.5 text-white placeholder-gray-400 focus:border-primary-purple focus:outline-none focus:ring-1 focus:ring-primary-purple transition-colors duration-200`}
+                    } bg-white/5 px-3 sm:px-4 py-2 sm:py-2.5 text-sm sm:text-base text-white placeholder-gray-400 focus:border-primary-purple focus:outline-none focus:ring-1 focus:ring-primary-purple transition-colors duration-200`}
                     placeholder="Enter your full name"
                     required
                   />
                   {errors.name && (
-                    <div className="absolute right-3 top-1/2 -translate-y-1/2">
-                      <FiAlertCircle className="h-5 w-5 text-red-400" />
+                    <div className="absolute right-2 sm:right-3 top-1/2 -translate-y-1/2">
+                      <FiAlertCircle className="h-4 w-4 sm:h-5 sm:w-5 text-red-400" />
                     </div>
                   )}
-                  </div>
+                </div>
                 {errors.name && (
-                  <p className="mt-1 text-sm text-red-400 flex items-center gap-1">
-                    <FiAlertCircle className="h-4 w-4" />
+                  <p className="mt-1 text-xs sm:text-sm text-red-400 flex items-center gap-1">
+                    <FiAlertCircle className="h-3 w-3 sm:h-4 sm:w-4" />
                     {errors.name}
                   </p>
                 )}
-                </div>
+              </div>
 
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-1">
@@ -346,23 +346,23 @@ const ContactForm: React.FC = () => {
                     onBlur={handleBlur}
                     className={`mt-1 block w-full rounded-lg border ${
                       isFocused === 'email' ? 'border-primary-purple' : 'border-gray-700'
-                    } bg-white/5 px-4 py-2.5 text-white placeholder-gray-400 focus:border-primary-purple focus:outline-none focus:ring-1 focus:ring-primary-purple transition-colors duration-200`}
+                    } bg-white/5 px-3 sm:px-4 py-2 sm:py-2.5 text-sm sm:text-base text-white placeholder-gray-400 focus:border-primary-purple focus:outline-none focus:ring-1 focus:ring-primary-purple transition-colors duration-200`}
                     placeholder="Enter your email address"
                     required
                   />
                   {errors.email && (
-                    <div className="absolute right-3 top-1/2 -translate-y-1/2">
-                      <FiAlertCircle className="h-5 w-5 text-red-400" />
-                </div>
+                    <div className="absolute right-2 sm:right-3 top-1/2 -translate-y-1/2">
+                      <FiAlertCircle className="h-4 w-4 sm:h-5 sm:w-5 text-red-400" />
+                    </div>
                   )}
                 </div>
                 {errors.email && (
-                  <p className="mt-1 text-sm text-red-400 flex items-center gap-1">
-                    <FiAlertCircle className="h-4 w-4" />
+                  <p className="mt-1 text-xs sm:text-sm text-red-400 flex items-center gap-1">
+                    <FiAlertCircle className="h-3 w-3 sm:h-4 sm:w-4" />
                     {errors.email}
                   </p>
                 )}
-          </div>
+              </div>
 
               <div>
                 <label htmlFor="phone" className="block text-sm font-medium text-gray-300 mb-1">
@@ -379,19 +379,19 @@ const ContactForm: React.FC = () => {
                     onBlur={handleBlur}
                     className={`mt-1 block w-full rounded-lg border ${
                       isFocused === 'phone' ? 'border-primary-purple' : 'border-gray-700'
-                    } bg-white/5 px-4 py-2.5 text-white placeholder-gray-400 focus:border-primary-purple focus:outline-none focus:ring-1 focus:ring-primary-purple transition-colors duration-200`}
+                    } bg-white/5 px-3 sm:px-4 py-2 sm:py-2.5 text-sm sm:text-base text-white placeholder-gray-400 focus:border-primary-purple focus:outline-none focus:ring-1 focus:ring-primary-purple transition-colors duration-200`}
                     placeholder="Enter your phone number"
                     required
                   />
                   {errors.phone && (
-                    <div className="absolute right-3 top-1/2 -translate-y-1/2">
-                      <FiAlertCircle className="h-5 w-5 text-red-400" />
-                  </div>
+                    <div className="absolute right-2 sm:right-3 top-1/2 -translate-y-1/2">
+                      <FiAlertCircle className="h-4 w-4 sm:h-5 sm:w-5 text-red-400" />
+                    </div>
                   )}
                 </div>
                 {errors.phone && (
-                  <p className="mt-1 text-sm text-red-400 flex items-center gap-1">
-                    <FiAlertCircle className="h-4 w-4" />
+                  <p className="mt-1 text-xs sm:text-sm text-red-400 flex items-center gap-1">
+                    <FiAlertCircle className="h-3 w-3 sm:h-4 sm:w-4" />
                     {errors.phone}
                   </p>
                 )}
@@ -399,21 +399,21 @@ const ContactForm: React.FC = () => {
             </div>
 
             <div className="mt-4">
-              <h4 className="text-base font-medium text-white mb-2 flex items-center gap-2">
-                <LinkIcon className="w-4 h-4 text-primary-purple" />
+              <h4 className="text-sm sm:text-base font-medium text-white mb-2 flex items-center gap-2">
+                <LinkIcon className="w-3 h-3 sm:w-4 sm:h-4 text-primary-purple" />
                 Social Media Profiles (Optional)
               </h4>
               <div className="space-y-2">
                 {socialMediaFields.map((field) => (
-                        <div key={field.name}>
-                    <label htmlFor={field.name} className="block text-sm font-medium text-gray-300 mb-1">
-                            {field.label}
-                          </label>
+                  <div key={field.name}>
+                    <label htmlFor={field.name} className="block text-xs sm:text-sm font-medium text-gray-300 mb-1">
+                      {field.label}
+                    </label>
                     <div className="relative">
-                      <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                        <field.icon className="h-4 w-4 text-gray-400" />
+                      <div className="absolute inset-y-0 left-0 pl-2.5 sm:pl-3 flex items-center pointer-events-none">
+                        <field.icon className="h-3 w-3 sm:h-4 sm:w-4 text-gray-400" />
                       </div>
-                            <input
+                      <input
                         type="url"
                         id={field.name}
                         name={field.name}
@@ -423,13 +423,13 @@ const ContactForm: React.FC = () => {
                         onBlur={handleBlur}
                         className={`mt-1 block w-full rounded-lg border ${
                           isFocused === field.name ? 'border-primary-purple' : 'border-gray-700'
-                        } bg-white/5 pl-9 pr-4 py-2.5 text-white placeholder-gray-400 focus:border-primary-purple focus:outline-none focus:ring-1 focus:ring-primary-purple transition-colors duration-200`}
+                        } bg-white/5 pl-7 sm:pl-9 pr-3 sm:pr-4 py-2 sm:py-2.5 text-xs sm:text-sm text-white placeholder-gray-400 focus:border-primary-purple focus:outline-none focus:ring-1 focus:ring-primary-purple transition-colors duration-200`}
                         placeholder={field.placeholder}
                       />
                     </div>
-                        </div>
-                      ))}
-                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
 
             <motion.button
@@ -437,44 +437,44 @@ const ContactForm: React.FC = () => {
               onClick={handleNext}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="btn-primary w-full flex items-center justify-center gap-2 mt-4"
+              className="btn-primary w-full flex items-center justify-center gap-2 mt-4 text-sm sm:text-base py-2 sm:py-2.5"
             >
-              Next Step <FiArrowRight className="w-4 h-4" />
+              Next Step <FiArrowRight className="w-3 h-3 sm:w-4 sm:h-4" />
             </motion.button>
           </div>
         );
 
       case 2:
         return (
-          <div className="space-y-6 max-w-xl mx-auto w-full px-4">
+          <div className="space-y-4 sm:space-y-6 max-w-xl mx-auto w-full px-3 sm:px-4">
             <div>
               <label htmlFor="projectType" className="block text-sm font-medium text-gray-300">
                 Project Type
-                      </label>
-                      <select
+              </label>
+              <select
                 id="projectType"
                 name="projectType"
-                        value={formData.projectType}
+                value={formData.projectType}
                 onChange={handleChange}
-                className="mt-1 block w-full rounded-lg border border-gray-700 bg-[#1a1a1a] px-4 py-3 text-white placeholder-gray-400 focus:border-primary-purple focus:outline-none focus:ring-1 focus:ring-primary-purple appearance-none"
+                className="mt-1 block w-full rounded-lg border border-gray-700 bg-[#1a1a1a] px-3 sm:px-4 py-2 sm:py-2.5 text-sm sm:text-base text-white placeholder-gray-400 focus:border-primary-purple focus:outline-none focus:ring-1 focus:ring-primary-purple appearance-none"
                 required
-                      >
+              >
                 <option value="" className="bg-[#1a1a1a]">Select a project type</option>
-                        {projectTypes.map((type) => (
+                {projectTypes.map((type) => (
                   <option key={type} value={type} className="bg-[#1a1a1a]">{type}</option>
-                        ))}
-                      </select>
-                      {errors.projectType && (
-                <p className="mt-1 text-sm text-red-400">{errors.projectType}</p>
-                      )}
-                    </div>
+                ))}
+              </select>
+              {errors.projectType && (
+                <p className="mt-1 text-xs sm:text-sm text-red-400">{errors.projectType}</p>
+              )}
+            </div>
 
             <div>
               <label htmlFor="budget" className="block text-sm font-medium text-gray-300">
                 Budget Range (Optional)
               </label>
               <div className="relative mt-1">
-                <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
+                <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400 text-sm sm:text-base">
                   ₱
                 </span>
                 <input
@@ -483,7 +483,7 @@ const ContactForm: React.FC = () => {
                   name="budget"
                   value={formData.budget}
                   onChange={handleChange}
-                  className="block w-full rounded-lg border border-gray-700 bg-[#1a1a1a] pl-7 pr-4 py-3 text-white placeholder-gray-400 focus:border-primary-purple focus:outline-none focus:ring-1 focus:ring-primary-purple"
+                  className="block w-full rounded-lg border border-gray-700 bg-[#1a1a1a] pl-6 sm:pl-7 pr-3 sm:pr-4 py-2 sm:py-2.5 text-sm sm:text-base text-white placeholder-gray-400 focus:border-primary-purple focus:outline-none focus:ring-1 focus:ring-primary-purple"
                   placeholder="Enter your budget"
                 />
               </div>
@@ -492,28 +492,28 @@ const ContactForm: React.FC = () => {
             <div>
               <label htmlFor="message" className="block text-sm font-medium text-gray-300">
                 Project Details
-                      </label>
-                      <textarea
+              </label>
+              <textarea
                 id="message"
                 name="message"
-                        value={formData.message}
+                value={formData.message}
                 onChange={handleChange}
                 rows={8}
-                className="mt-1 block w-full h-80 rounded-lg border border-gray-700 bg-[#1a1a1a] px-4 py-3 text-white placeholder-gray-400 focus:border-primary-purple focus:outline-none focus:ring-1 focus:ring-primary-purple resize-none"
+                className="mt-1 block w-full h-48 sm:h-80 rounded-lg border border-gray-700 bg-[#1a1a1a] px-3 sm:px-4 py-2 sm:py-2.5 text-sm sm:text-base text-white placeholder-gray-400 focus:border-primary-purple focus:outline-none focus:ring-1 focus:ring-primary-purple resize-none"
                 placeholder="Tell us about your project requirements, goals, and any specific features you'd like to include."
                 required
-                      />
-                      {errors.message && (
-                <p className="mt-1 text-sm text-red-400">{errors.message}</p>
+              />
+              {errors.message && (
+                <p className="mt-1 text-xs sm:text-sm text-red-400">{errors.message}</p>
               )}
-                    </div>
+            </div>
 
             <div>
               <label className="block text-sm font-medium text-gray-300">
                 Attach Files (Optional)
-                      </label>
-                      <div
-                className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-700 border-dashed rounded-lg bg-[#1a1a1a]"
+              </label>
+              <div
+                className="mt-1 flex justify-center px-4 sm:px-6 pt-4 sm:pt-5 pb-4 sm:pb-6 border-2 border-gray-700 border-dashed rounded-lg bg-[#1a1a1a]"
                 onDragOver={(e) => e.preventDefault()}
                 onDrop={(e) => {
                   e.preventDefault();
@@ -522,8 +522,8 @@ const ContactForm: React.FC = () => {
                 }}
               >
                 <div className="space-y-1 text-center">
-                  <FiUploadCloud className="mx-auto h-12 w-12 text-gray-400" />
-                  <div className="flex text-sm text-gray-400">
+                  <FiUploadCloud className="mx-auto h-8 w-8 sm:h-12 sm:w-12 text-gray-400" />
+                  <div className="flex text-xs sm:text-sm text-gray-400">
                     <label
                       htmlFor="file-upload"
                       className="relative cursor-pointer rounded-md font-medium text-primary-purple hover:text-primary-purple/80 focus-within:outline-none"
@@ -542,45 +542,45 @@ const ContactForm: React.FC = () => {
                       />
                     </label>
                     <p className="pl-1">or drag and drop</p>
-                    </div>
-                  <p className="text-xs text-gray-400">
+                  </div>
+                  <p className="text-[10px] sm:text-xs text-gray-400">
                     PDF, DOC, DOCX up to 5MB
-                        </p>
-                      </div>
-                    </div>
+                  </p>
+                </div>
+              </div>
               {errors.file && (
-                <p className="mt-1 text-sm text-red-400">{errors.file}</p>
-                )}
+                <p className="mt-1 text-xs sm:text-sm text-red-400">{errors.file}</p>
+              )}
             </div>
 
-            <div className="flex gap-4">
-                  <motion.button
-                    type="button"
+            <div className="flex gap-3 sm:gap-4">
+              <motion.button
+                type="button"
                 onClick={handleBack}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="btn-secondary flex-1 flex items-center justify-center gap-2"
+                className="btn-secondary flex-1 flex items-center justify-center gap-2 text-sm sm:text-base py-2 sm:py-2.5"
               >
-                <FiArrowLeft className="w-4 h-4" /> Back
-                  </motion.button>
-                  <motion.button
-                    type="submit"
+                <FiArrowLeft className="w-3 h-3 sm:w-4 sm:h-4" /> Back
+              </motion.button>
+              <motion.button
+                type="submit"
                 disabled={isSubmitting}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="btn-primary flex-1 flex items-center justify-center gap-2"
-                  >
-                    {isSubmitting ? (
-                      <>
-                    <span className="animate-spin">⏳</span> Submitting...
-                      </>
-                    ) : (
+                className="btn-primary flex-1 flex items-center justify-center gap-2 text-sm sm:text-base py-2 sm:py-2.5"
+              >
+                {isSubmitting ? (
                   <>
-                    Submit <FiCheckCircle className="w-4 h-4" />
+                    <span className="animate-spin text-sm sm:text-base">⏳</span> Submitting...
+                  </>
+                ) : (
+                  <>
+                    Submit <FiCheckCircle className="w-3 h-3 sm:w-4 sm:h-4" />
                   </>
                 )}
               </motion.button>
-              </div>
+            </div>
           </div>
         );
 
@@ -601,8 +601,8 @@ const ContactForm: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="py-24 sm:py-32">
-      <div className="container">
+    <section id="contact" className="py-12 sm:py-20 lg:py-32">
+      <div className="container px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -610,44 +610,44 @@ const ContactForm: React.FC = () => {
           transition={{ duration: 0.6 }}
           className="mx-auto max-w-2xl text-center"
         >
-          <h2 className="section-title">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-white">
             Get in <span className="text-gradient">Touch</span>
           </h2>
-          <p className="section-subtitle">
+          <p className="mt-2 sm:mt-3 text-sm sm:text-base lg:text-lg text-gray-400">
             Ready to start your project? Contact us today and let's discuss how we can
             help bring your vision to life.
           </p>
         </motion.div>
 
-        <div className="mt-16 grid grid-cols-1 gap-8 lg:grid-cols-2">
+        <div className="mt-8 sm:mt-12 lg:mt-16 grid grid-cols-1 gap-4 sm:gap-6 lg:gap-8 lg:grid-cols-2">
           {/* Contact Info with Feedback Messages */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="space-y-8"
+            className="space-y-4 sm:space-y-6 lg:space-y-8"
           >
             {/* Contact Info Cards */}
-            <div className="space-y-4">
+            <div className="space-y-3 sm:space-y-4">
               {contactInfo.map((info, index) => (
                 <motion.a
                   key={info.title}
                   href={info.link}
                   target={info.link.startsWith('http') ? '_blank' : undefined}
                   rel={info.link.startsWith('http') ? 'noopener noreferrer' : undefined}
-                  className="group flex items-center gap-4 rounded-2xl bg-white/5 p-6 backdrop-blur-sm transition-all duration-300 hover:bg-white/10"
+                  className="group flex items-center gap-3 sm:gap-4 rounded-xl sm:rounded-2xl bg-white/5 p-3 sm:p-4 lg:p-6 backdrop-blur-sm transition-all duration-300 hover:bg-white/10"
                   whileHover={{ x: 10 }}
                   transition={{ delay: index * 0.1 }}
                 >
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary-purple/10 text-primary-purple">
-                    <info.icon className="h-6 w-6" aria-hidden="true" />
+                  <div className="flex h-8 w-8 sm:h-10 sm:w-10 lg:h-12 lg:w-12 items-center justify-center rounded-lg sm:rounded-xl bg-primary-purple/10 text-primary-purple">
+                    <info.icon className="h-4 w-4 sm:h-5 sm:w-5 lg:h-6 lg:w-6" aria-hidden="true" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-white">
+                    <h3 className="text-base sm:text-lg font-semibold text-white">
                       {info.title}
                     </h3>
-                    <p className="text-gray-300">
+                    <p className="text-sm sm:text-base text-gray-300">
                       {info.content}
                     </p>
                   </div>
@@ -656,34 +656,34 @@ const ContactForm: React.FC = () => {
             </div>
 
             {/* Feedback Messages */}
-            <div className="mt-8">
-              <FeedbackMessages className="h-[500px]" />
-          </div>
+            <div className="mt-4 sm:mt-6">
+              <FeedbackMessages className="h-[400px] sm:h-[500px]" />
+            </div>
           </motion.div>
 
           {/* Contact Form */}
-              <motion.div
+          <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="rounded-2xl bg-white/5 p-6 backdrop-blur-sm h-[1000px] flex flex-col"
+            className="rounded-xl sm:rounded-2xl bg-white/5 p-4 sm:p-6 backdrop-blur-sm h-[800px] sm:h-[1000px] flex flex-col"
           >
             {/* Progress Label */}
-            <div className="mb-6">
-              <h3 className="text-lg font-semibold text-white text-center mb-2">
+            <div className="mb-4 sm:mb-6">
+              <h3 className="text-base sm:text-lg font-semibold text-white text-center mb-2">
                 {getStepLabel(step)}
               </h3>
               <div className="flex justify-center gap-2">
                 {[1, 2].map((stepNumber) => (
                   <div
                     key={stepNumber}
-                    className={`h-2 rounded-full transition-all duration-300 ${
+                    className={`h-1.5 sm:h-2 rounded-full transition-all duration-300 ${
                       stepNumber === step
-                        ? 'bg-primary-purple w-8'
+                        ? 'bg-primary-purple w-6 sm:w-8'
                         : stepNumber < step
-                        ? 'bg-primary-purple/50 w-8'
-                        : 'bg-gray-700 w-2'
+                        ? 'bg-primary-purple/50 w-6 sm:w-8'
+                        : 'bg-gray-700 w-1.5 sm:w-2'
                     }`}
                   />
                 ))}
@@ -697,11 +697,11 @@ const ContactForm: React.FC = () => {
                     {renderStep()}
                   </AnimatePresence>
                 </div>
-          </div>
+              </div>
             </form>
-        </motion.div>
+          </motion.div>
+        </div>
       </div>
-    </div>
     </section>
   );
 };

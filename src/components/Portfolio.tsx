@@ -31,12 +31,12 @@ const ProjectCard = ({ project }: { project: typeof projects[0] }) => {
   return (
     <motion.div
       className={cn(
-        "relative h-full w-[300px] sm:w-[350px] lg:w-[400px] cursor-pointer overflow-hidden rounded-xl border p-6 sm:p-7 lg:p-8",
+        "relative h-full w-[280px] sm:w-[350px] lg:w-[400px] cursor-pointer overflow-hidden rounded-xl border p-4 sm:p-7 lg:p-8 mx-0.5",
         "border-cyan-500/20 bg-cyan-500/5 hover:bg-cyan-500/10",
       )}
       whileHover={{ scale: 1.02 }}
     >
-      <div className="relative h-48 w-full overflow-hidden rounded-lg">
+      <div className="relative h-36 sm:h-48 w-full overflow-hidden rounded-lg">
         <Image
           src={project.image}
           alt={project.title}
@@ -44,13 +44,13 @@ const ProjectCard = ({ project }: { project: typeof projects[0] }) => {
           className="object-cover transition-transform duration-300 hover:scale-110"
         />
       </div>
-      <h3 className="mt-4 text-xl font-semibold text-white">{project.title}</h3>
-      <p className="mt-2 text-sm text-gray-400">{project.description}</p>
-      <div className="mt-4 flex flex-wrap gap-2">
+      <h3 className="mt-3 sm:mt-4 text-base sm:text-xl font-semibold text-white">{project.title}</h3>
+      <p className="mt-2 text-xs sm:text-sm text-gray-400">{project.description}</p>
+      <div className="mt-3 sm:mt-4 flex flex-wrap gap-1.5 sm:gap-2">
         {project.tags.map((tag, index) => (
           <span
             key={index}
-            className="rounded-full bg-cyan-500/10 px-3 py-1 text-xs font-medium text-cyan-400"
+            className="rounded-full bg-cyan-500/10 px-2 sm:px-3 py-0.5 sm:py-1 text-[10px] sm:text-xs font-medium text-cyan-400"
           >
             {tag}
           </span>
@@ -98,7 +98,7 @@ export default function Portfolio() {
           </motion.p>
         </div>
 
-        <div className="relative flex w-full flex-col items-center justify-center overflow-hidden -mx-4 sm:-mx-6 lg:-mx-8">
+        <div className="relative flex w-screen flex-col items-center justify-center overflow-hidden relative left-1/2 right-1/2 -translate-x-1/2">
           <Marquee pauseOnHover className="[--duration:30s]">
             {firstRow.map((project, index) => (
               <ProjectCard key={index} project={project} />

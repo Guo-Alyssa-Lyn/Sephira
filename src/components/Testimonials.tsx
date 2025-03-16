@@ -35,13 +35,13 @@ const TestimonialCard = ({ testimonial }: { testimonial: typeof testimonials[0] 
   return (
     <motion.div
       className={cn(
-        "relative h-full w-[300px] sm:w-[350px] lg:w-[400px] cursor-pointer overflow-hidden rounded-xl border p-6 sm:p-7 lg:p-8",
+        "relative h-full w-[280px] sm:w-[350px] lg:w-[400px] cursor-pointer overflow-hidden rounded-xl border p-4 sm:p-7 lg:p-8 mx-0.5",
         "border-cyan-500/20 bg-cyan-500/5 hover:bg-cyan-500/10",
       )}
       whileHover={{ scale: 1.02 }}
     >
-      <div className="flex items-center gap-4">
-        <div className="relative h-12 w-12 sm:h-14 sm:w-14 lg:h-16 lg:w-16 overflow-hidden rounded-full">
+      <div className="flex items-center gap-3 sm:gap-4">
+        <div className="relative h-10 w-10 sm:h-14 sm:w-14 lg:h-16 lg:w-16 overflow-hidden rounded-full">
           <Image
             src={testimonial.image}
             alt={testimonial.name}
@@ -50,20 +50,20 @@ const TestimonialCard = ({ testimonial }: { testimonial: typeof testimonials[0] 
           />
         </div>
         <div>
-          <h3 className="text-base sm:text-lg lg:text-xl font-semibold text-white">
+          <h3 className="text-sm sm:text-lg lg:text-xl font-semibold text-white">
             {testimonial.name}
           </h3>
-          <p className="text-xs sm:text-sm lg:text-base text-gray-400">
+          <p className="text-[10px] sm:text-sm lg:text-base text-gray-400">
             {testimonial.role}
           </p>
         </div>
       </div>
-      <div className="mt-4 flex">
+      <div className="mt-3 sm:mt-4 flex">
         {[...Array(testimonial.rating)].map((_, i) => (
-          <HiStar key={i} className="h-4 w-4 sm:h-5 sm:w-5 lg:h-6 lg:w-6 text-yellow-500" />
+          <HiStar key={i} className="h-3 w-3 sm:h-5 sm:w-5 lg:h-6 lg:w-6 text-yellow-500" />
         ))}
       </div>
-      <p className="mt-4 text-sm sm:text-base lg:text-lg text-gray-300">
+      <p className="mt-3 sm:mt-4 text-xs sm:text-base lg:text-lg text-gray-300">
         "{testimonial.content}"
       </p>
     </motion.div>
@@ -108,7 +108,7 @@ export default function Testimonials() {
           </motion.p>
         </div>
 
-        <div className="relative flex w-full flex-col items-center justify-center overflow-hidden -mx-4 sm:-mx-6 lg:-mx-8">
+        <div className="relative flex w-screen flex-col items-center justify-center overflow-hidden relative left-1/2 right-1/2 -translate-x-1/2">
           <Marquee pauseOnHover className="[--duration:30s]">
             {firstRow.map((testimonial, index) => (
               <TestimonialCard key={index} testimonial={testimonial} />
